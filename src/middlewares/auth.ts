@@ -1,23 +1,32 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-export const auth = async (req: any, res: Response, next: NextFunction) => {
-  const authHeader = req.headers.authorization;
+import { NotFoundError, UnauthorizedError } from "../helpers/api-erros";
+import { userRepository } from "../repositories/userRepository";
 
-  if (!authHeader) {
-    return res.status(401).json({ message: "Sem token" });
+type JwtPayload = {
+  id: number;
+};
+
+export const auth = async (req: Request, res: Response, next: NextFunction) => {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    throw new UnauthorizedError("Não autorizado.");
   }
 
-  const [, token] = authHeader.split(" ");
+  const token = authorization.split(" ")[1];
 
-  try {
-    const decoded: any = await jwt.verify(token, process.env.SECRET ?? '') ;
+  const { id } = jwt.verify(token, process.env.SECRET ?? "") as JwtPayload;
 
-    req.userId = decoded.id;
+  const user = await userRepository.findOneBy({ id });
 
-    console.log(req.userId);
-
-    return next();
-  } catch (error: any) {
-    console.log(error.message)
+  if (!user) {
+    throw new NotFoundError("Não autorizado.");
   }
+
+  const { password_hash, cpfcnpj, created_at: _, ...loggedUser } = user;
+
+  req.user = loggedUser;
+
+  return next();
 };

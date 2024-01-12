@@ -1,32 +1,29 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import { userRepository } from "../repositories/userRepository";
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
+import { NotFoundError, UnauthorizedError } from "../helpers/api-erros";
 
 export class SessionController {
   async create(req: Request, res: Response) {
     const { email, password } = req.body;
 
-    try {
+    const user = await userRepository.findOneBy({ email: email });
 
-      const user = await userRepository.findOneBy({email: email})
-
-      if(!user){
-        return res.status(500).json({message: 'usuário não encontrado'})
-      }
-
-      if(!(await bcrypt.compare(password, user.password_hash))){
-        return res.json({message: 'password invalido'})
-      }
-
-      const token = jwt.sign({ id: user.id }, process.env.SECRET ?? '', {
-        expiresIn: '1d',
-      });
-
-      res.status(201).json({user, token});
-    } catch (error: any) {
-      console.log(error.message);
-      return res.status(500).json(error.message)
+    if (!user) {
+      throw new NotFoundError("Usuário ou senha inválido(s)");
     }
+
+    if (!(await bcrypt.compare(password, user.password_hash))) {
+      throw new UnauthorizedError("Usuário ou senha inválido(s)");
+    }
+
+    const token = jwt.sign({ id: user.id }, process.env.SECRET ?? "", {
+      expiresIn: "1d",
+    });
+
+    const { password_hash: _, ...userLogin } = user;
+
+    res.status(201).json({ userLogin, token });
   }
 }
