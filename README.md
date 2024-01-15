@@ -1,5 +1,5 @@
 
-![Logo do projeto](https://res.cloudinary.com/practicaldev/image/fetch/s--6lA6uLLX--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/q3i01paavbfdcs72ak1p.png)
+![Logo do projeto](https://repository-images.githubusercontent.com/162537377/9c807700-9828-11ea-8a3b-47411956130e)
 
 
 ## Introdução
