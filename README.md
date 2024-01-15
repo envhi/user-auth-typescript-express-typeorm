@@ -7,6 +7,7 @@
 ```
 Projeto back-end no qual um usuário pode se cadastrar e efetuar o log-in no sistema, sendo autenticado através de um token;
 Os dados do usuário são salvos no banco PostgreSQL, utilizando TypeORM. A senha mantida no banco é criptografada utilizando a biblioteca Bcrypt.
+
 ```
 
 ## Funcionalidades
