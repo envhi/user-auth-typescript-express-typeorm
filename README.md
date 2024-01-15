@@ -18,7 +18,4 @@ Projeto back-end no qual um usuário pode se cadastrar e efetuar o log-in no sis
 * ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
 
 
-
-```
 [Meu linkedin](https://www.linkedin.com/in/felipe-fonseca-a9456b237/)
-```
