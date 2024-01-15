@@ -2,11 +2,23 @@
 ![Logo do projeto](https://res.cloudinary.com/practicaldev/image/fetch/s--6lA6uLLX--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/q3i01paavbfdcs72ak1p.png)
 
 
-## 🔥 Introdução
+## Introdução
 
 ```
-Projeto back-end no qual um usuário pode se cadastrar e efetuar o log-in no sistema, sendo autenticado através de um token.
+Projeto back-end no qual um usuário pode se cadastrar e efetuar o log-in no sistema, sendo autenticado através de um token;
+Os dados do usuário são salvos no banco PostgreSQL, utilizando TypeORM. A senha mantida no banco é criptografada utilizando a biblioteca Bcrypt.
 ```
+
+## Funcionalidades
+
+```
+* Cadastro de usuários;
+* Login;
+* Autenticação;
+
+```
+
+
 
 ## 📦 Tecnologias usadas:
 
