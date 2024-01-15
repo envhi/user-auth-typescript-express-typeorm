@@ -1,5 +1,5 @@
 
-![Logo do projeto](https://repository-images.githubusercontent.com/162537377/9c807700-9828-11ea-8a3b-47411956130e)
+![Logo do projeto](https://miro.medium.com/v2/resize:fit:1358/1*MjXHFU2A1rwLw_C_fUZNWg.jpeg)
 
 
 ## Introdução
