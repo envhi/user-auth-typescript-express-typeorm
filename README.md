@@ -1,2 +1,2 @@
-Sistema de login com autenticação feita via token JWT.
-Foco do aprendizado no projeto: typescript, typeorm, conceitos REST.
+Sistema de login e autenticação de usuário via Token JWT
+Principais ferramentas utilizadas: Express/TypeScript, TypeORM, Json Web Token, Bcrypt.
