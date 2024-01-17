@@ -3,14 +3,14 @@ import { UserController } from "./controllers/UserController";
 import { Validate } from "./middlewares/validation";
 import { SessionController } from "./controllers/SessionController";
 import { auth } from "./middlewares/auth";
-import {
-  ApiError,
-  BadRequestError,
-  NotFoundError,
-  UnauthorizedError,
-} from "./helpers/api-erros";
-
+import { userRepository } from "./repositories/userRepository";
+import fs from 'fs'
 const routes = Router();
+
+routes.get('/', (req, res) => {
+  throw new Error('user ja existe')
+  return res.json('ok')
+})
 
 routes.post(
   "/user",

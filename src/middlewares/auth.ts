@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { NotFoundError, UnauthorizedError } from "../helpers/api-erros";
 import { userRepository } from "../repositories/userRepository";
 
 type JwtPayload = {
@@ -8,10 +7,12 @@ type JwtPayload = {
 };
 
 export const auth = async (req: Request, res: Response, next: NextFunction) => {
-  const { authorization } = req.headers;
+
+  try {
+    const { authorization } = req.headers;
 
   if (!authorization) {
-    throw new UnauthorizedError("Não autorizado.");
+    throw new Error("Não autorizado xxxxxx nao tem token.");
   }
 
   const token = authorization.split(" ")[1];
@@ -21,12 +22,21 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
   const user = await userRepository.findOneBy({ id });
 
   if (!user) {
-    throw new NotFoundError("Não autorizado.");
+    throw new Error("Não autorizado xxxxxx nao tem usuario com base no id/token.");
   }
 
   const { password_hash, cpfcnpj, created_at: _, ...loggedUser } = user;
 
   req.user = loggedUser;
 
+  console.log(loggedUser,' logged user xxxxxxxxxxx')
+
   return next();
+  } catch (error) {
+
+    console.log(error)
+    res.json(error)
+
+  }
+
 };
