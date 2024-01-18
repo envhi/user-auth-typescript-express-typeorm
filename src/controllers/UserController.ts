@@ -6,7 +6,9 @@ export class UserController {
       const newUser = await UserService.create(req.body);
       res.status(201).json(newUser);
     } catch (error: any) {
-      res.status(error.status || 500).json({ message: error.message || "Internal Server Error" });
+      res
+        .status(error.status || 500)
+        .json({ message: error.message || "Internal Server Error" });
     }
   }
 }

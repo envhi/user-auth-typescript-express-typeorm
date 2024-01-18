@@ -4,7 +4,7 @@ import { Validate } from "./middlewares/validation";
 import { SessionController } from "./controllers/SessionController";
 import { auth } from "./middlewares/auth";
 import { userRepository } from "./repositories/userRepository";
-import fs from 'fs'
+import fs from "fs";
 const routes = Router();
 
 routes.post(

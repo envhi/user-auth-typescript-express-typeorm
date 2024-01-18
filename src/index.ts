@@ -11,8 +11,8 @@ AppDataSource.initialize().then(() => {
 
   // app.use(errorMiddleware);
   app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
-    console.log(error)
-    return res.json('erro do middleware //user ja existe')
-  })
+    console.log(error);
+    return res.json("erro do middleware //user ja existe");
+  });
   return app.listen(process.env.PORT);
 });

@@ -7,8 +7,8 @@ export class UserService {
 
     const userExists = await userRepository.findOneBy({ email: body.email });
 
-    if(userExists) {
-      throw { status: 500, message: 'Email já cadastrado.'}
+    if (userExists) {
+      throw { status: 500, message: "Email já cadastrado." };
     }
 
     const newUser = userRepository.create({
