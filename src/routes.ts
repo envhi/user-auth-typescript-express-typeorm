@@ -7,11 +7,6 @@ import { userRepository } from "./repositories/userRepository";
 import fs from 'fs'
 const routes = Router();
 
-routes.get('/', (req, res) => {
-  throw new Error('user ja existe')
-  return res.json('ok')
-})
-
 routes.post(
   "/user",
   new Validate().userValidation,
@@ -19,7 +14,7 @@ routes.post(
 );
 routes.post("/session", new SessionController().create);
 
-routes.use(auth);
+// routes.use(auth);
 
 routes.get("/teste", (req: any, res) => {
   console.log(req.user);
