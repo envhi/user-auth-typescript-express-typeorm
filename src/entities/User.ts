@@ -2,8 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { Wallet } from "./Wallet";
 export type Types = "lojista" | "comum";
 
 @Entity("users")
@@ -27,5 +29,10 @@ export class User {
   account_type: Types;
 
   @CreateDateColumn()
-  created_at: Date; // Creation date
+  created_at: Date;
+
+  @OneToOne(() => Wallet, wallet => wallet.user)
+  wallet: Wallet[]
+
+
 }
